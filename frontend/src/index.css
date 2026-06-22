@@ -1,0 +1,113 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply text-white font-sans antialiased overflow-x-hidden;
+    background: url("./assets/images/bg.jpg") no-repeat center center fixed;
+    background-size: cover;
+  }
+
+  body::before {
+    content: "";
+    @apply fixed inset-0 z-[-1];
+    background: rgba(10, 25, 60, 0.4);
+  }
+
+  input,
+  select,
+  textarea {
+    @apply w-full bg-white/10 border border-white/20 rounded-xl px-4 py-2.5 outline-none focus:ring-2 focus:ring-blue-400/50 focus:border-blue-400/50 transition-all text-white placeholder:text-gray-400 backdrop-blur-md;
+  }
+
+  select option {
+    @apply text-slate-900 bg-white;
+  }
+
+  label {
+    @apply block text-sm font-bold text-blue-100 mb-2;
+  }
+}
+
+@layer components {
+  .glass {
+    @apply backdrop-blur-xl bg-[#0f172a]/80 border border-white/10 shadow-2xl;
+  }
+
+  .glass-card {
+    @apply glass rounded-[32px] p-6;
+  }
+
+  .btn {
+    @apply px-5 py-2.5 rounded-xl font-bold transition-all duration-300 cursor-pointer text-center flex items-center justify-center gap-2;
+  }
+
+  .btn-primary {
+    @apply bg-gradient-to-r from-blue-500 to-blue-400 text-white hover:scale-105 hover:shadow-lg hover:shadow-blue-500/40;
+  }
+
+  .btn-secondary {
+    @apply bg-white/10 text-white border border-white/20 hover:bg-white/20 hover:scale-105;
+  }
+
+  .sidebar-item {
+    @apply p-3 rounded-xl cursor-pointer bg-white/5 transition-all duration-300 hover:bg-blue-400/30 hover:translate-x-1.5 flex items-center gap-3;
+  }
+
+  .sidebar-item.active {
+    @apply bg-blue-500/40 border border-white/20;
+  }
+}
+
+/* Animations */
+.animate-float {
+  animation: float 5s infinite ease-in-out;
+}
+
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-15px);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.8s ease-out forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.page-transition-exit {
+  @apply opacity-0 translate-y-20 transition-all duration-500;
+}
+
+/* Custom Scrollbar for iOS Menus */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 4px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
